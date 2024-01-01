@@ -20,6 +20,3 @@ export const connectToDatabase = async () => {
 
   return cached.conn;
 };
-
-// Server actions
-// Path: server.ts
