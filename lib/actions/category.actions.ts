@@ -18,7 +18,7 @@ export const createCategory = async ({
   }
 };
 
-export const getAllcategory = async () => {
+export const getAllCategories = async () => {
   try {
     await connectToDatabase();
     const categories = await Category.find();
