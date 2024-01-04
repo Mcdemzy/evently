@@ -44,6 +44,8 @@ const EventForm = ({ userId, type }: EventFormProps) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+
+    console.log(values);
   }
   return (
     <Form {...form}>
@@ -252,6 +254,8 @@ const EventForm = ({ userId, type }: EventFormProps) => {
                                 Free Ticket
                               </label>
                               <Checkbox
+                                onCheckedChange={field.onChange}
+                                checked={field.value}
                                 id="isFree"
                                 className="mr-2 h-5 w-5 border-2 border-primary-500"
                               />
