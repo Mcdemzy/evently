@@ -20,11 +20,6 @@ export const createEvent = async ({
       throw new Error("Organizer not found");
     }
 
-    // console.log({
-    //   categoryId: event.categoryId,
-    //   organizerId: userId,
-    // });
-
     const newEvent = await Event.create({
       ...event,
       category: event.categoryId,
@@ -34,6 +29,22 @@ export const createEvent = async ({
     return JSON.parse(JSON.stringify(newEvent));
   } catch (error) {
     console.log(error);
+    // handleError(error);
+  }
+};
+
+export const getEventById = async (eventId: string) => {
+  try {
+    await connectToDatabase();
+
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      throw new Error("Event not found");
+    }
+
+    return JSON.parse(JSON.stringify(event));
+  } catch (error) {
     handleError(error);
   }
 };
