@@ -1,4 +1,5 @@
 import { getEventById } from "@/lib/actions/event.actions";
+import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
 
@@ -32,10 +33,29 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
 
               <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                 by{" "}
-                <span>
+                <span className="text-primary-500">
                   {event.organizer.firstName} {event.organizer.lastName}
                 </span>
               </p>
+            </div>
+          </div>
+          {/* CHECKOUT BUTTON  */}
+
+          <div className="flex flex-col gap-5">
+            <div className="flex gap-2 md:gap-3">
+              <Image
+                src="/assets/icons/calendar.svg"
+                alt="calendar"
+                width={32}
+                height={32}
+              />
+              <div>
+                <p>{formatDateTime(event.startDateTime).dateOnly}</p>
+                <p className="ml-1">
+                  {formatDateTime(event.startDateTime).timeOnly} -{" "}
+                  {formatDateTime(event.endDateTime).timeOnly} -
+                </p>
+              </div>
             </div>
           </div>
         </div>
