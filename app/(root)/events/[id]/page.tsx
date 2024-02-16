@@ -49,11 +49,11 @@ const EventDetails = async ({ params: { id } }: SearchParamProps) => {
                 width={32}
                 height={32}
               />
-              <div>
-                <p>{formatDateTime(event.startDateTime).dateOnly}</p>
+              <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+                <p>{formatDateTime(event.startDateTime).dateOnly} /</p>
                 <p className="ml-1">
-                  {formatDateTime(event.startDateTime).timeOnly} -
-                  {formatDateTime(event.endDateTime).timeOnly} -
+                  {formatDateTime(event.startDateTime).timeOnly} -{" "}
+                  {formatDateTime(event.endDateTime).timeOnly}
                 </p>
               </div>
             </div>
