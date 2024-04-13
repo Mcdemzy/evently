@@ -1,4 +1,3 @@
-// import CheckoutButton from '@/components/shared/CheckoutButton';
 import CheckoutButton from "@/components/shared/CheckoutButton";
 import Collection from "@/components/shared/Collection";
 import {
@@ -50,13 +49,13 @@ const EventDetails = async ({
                 <p className="p-medium-18 ml-2 mt-2 sm:mt-0">
                   by{" "}
                   <span className="text-primary-500">
-                    {event.organizer.firstName} {event.organizer.lastName}
+                    {event.organizer.firstName} {" | "}
+                    {event.organizer.lastName}
                   </span>
                 </p>
               </div>
             </div>
 
-            {/* Checkout Button */}
             <CheckoutButton event={event} />
 
             <div className="flex flex-col gap-5">
@@ -67,7 +66,7 @@ const EventDetails = async ({
                   width={32}
                   height={32}
                 />
-                <div className="p-medium-16 lg:p-regular-20 flex flex-wrap items-center">
+                <div className="p-medium-16 lg:p-regular-20 flex flex-wrap gap-2 items-center max-w-screen-md:gap-0">
                   <p>
                     {formatDateTime(event.startDateTime).dateOnly} -{" "}
                     {formatDateTime(event.startDateTime).timeOnly}
