@@ -2,6 +2,7 @@
 
 import Stripe from "stripe";
 import { CheckoutOrderParams } from "@/types";
+import { redirect } from "next/navigation";
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -27,9 +28,11 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
         buyerId: order.buyerId,
       },
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/?success=true`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/?canceled=true`,
+      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/`,
     });
+
+    redirect(session.url!);
   } catch (error) {
     throw error;
   }
