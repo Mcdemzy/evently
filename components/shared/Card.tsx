@@ -16,11 +16,6 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
-  // Check if event and organizer exist before accessing their properties
-  // if (!event || !event.organizer || !event._id) {
-  //   return <div>Error: Event data missing</div>;
-  // }
-
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (
