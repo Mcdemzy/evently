@@ -1,16 +1,19 @@
-import CategoryFilter from "@/components/shared/CategoryFilter";
-import Collection from "@/components/shared/Collection";
-import Search from "@/components/shared/Search";
-import { Button } from "@/components/ui/button";
-import { getAllEvents } from "@/lib/actions/event.actions";
-import { SearchParamProps } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
+import CategoryFilter from '@/components/shared/CategoryFilter';
+import Collection from '@/components/shared/Collection';
+import Search from '@/components/shared/Search';
+import { Button } from '@/components/ui/button';
+import { getAllEvents } from '@/lib/actions/event.actions';
+import { SearchParamProps } from '@/types';
+import Image from 'next/image';
+import Link from 'next/link';
+import { buttonVariants } from '@/components/ui/button';
+import HeroSection from '@/components/shared/HeroSection';
+
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1;
-  const searchText = (searchParams?.query as string) || "";
-  const category = (searchParams?.category as string) || "";
+  const searchText = (searchParams?.query as string) || '';
+  const category = (searchParams?.category as string) || '';
 
   const events = await getAllEvents({
     query: searchText,
@@ -21,18 +24,27 @@ export default async function Home({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
+      <section>
+        <HeroSection />
+      </section>
+      <section className="bg-[#EDEFFF] dark:bg-black py-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">
-              Host, Connect, Celebrate: Your Events, Our Platform!
+            <h1 className="h1-bold text-[#25194D] dark:text-white">
+              Host, Connect, Celebrate:<br />
+              <span className='font-bold'>Your Events, Our Platform!</span>
             </h1>
-            <p className="p-regular-20 md:p-regular-24">
-              Book and learn helpful tips from 3,168+ mentors in world-class
-              companies with our global community.
+            <p className="p-regular-20 md:p-regular-24 text-[#25194D] dark:text-white">
+            With Evently, your event is not just planned—it’s perfectly orchestrated.
             </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#events">Explore Now</Link>
+            <Button
+              size="xl"
+              asChild
+              className={buttonVariants({ variant: 'explorenow', size: 'xl' })}
+            >
+              <Link href="#events" className="text-white">
+                Explore Now
+              </Link>
             </Button>
           </div>
           <Image
@@ -52,10 +64,10 @@ export default async function Home({ searchParams }: SearchParamProps) {
           Trusted by <br />
           Thousands of Events
         </h2>
-        <div className="flex w-full flex-col gap-5 md:flex-">
+        {/* <div className="flex w-full flex-col gap-5 md:flex-">
           <Search />
           <CategoryFilter />
-        </div>
+        </div> */}
         <Collection
           data={events?.data}
           emptyTitle="No Events Found"
