@@ -30,13 +30,13 @@ type DropdownProps = {
 };
 
 const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
-  const [categories, setCatgeories] = useState<ICategory[]>([]);
+  const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewCategory] = useState("");
   const handleAddCategory = () => {
     createCategory({
       categoryName: newCategory.trim(),
     }).then((category) => {
-      setCatgeories((prevState) => [...prevState, category]);
+      setCategories((prevState) => [...prevState, category]);
     });
   };
 
@@ -44,7 +44,7 @@ const Dropdown = ({ value, onChangeHandler }: DropdownProps) => {
     const getCategories = async () => {
       const categoryList = await getAllCategories();
 
-      categoryList && setCatgeories(categoryList as ICategory[]);
+      categoryList && setCategories(categoryList as ICategory[]);
     };
 
     getCategories();
