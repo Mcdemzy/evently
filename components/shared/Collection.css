@@ -1,0 +1,47 @@
+
+.swiper-container {
+  scrollbar-width: thin;
+  scrollbar-color: #c1c1c1 #f5f5f5;
+}
+
+.swiper-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.swiper-container::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.swiper-container::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swiper-button-prev svg,
+.swiper-button-next svg {
+  stroke-width: 2px;
+}
