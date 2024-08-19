@@ -1,7 +1,17 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState, FormEvent } from "react";
 
 const AboutPage = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Submitted:", { name, email });
+    setName("");
+    setEmail("");
+  };
   return (
     <>
       {/* About Evently */}
@@ -185,6 +195,47 @@ const AboutPage = () => {
         <h2 className="text-[#1C1C1C] text-[2.5rem] font-medium">
           <span className="text-[#FA776C]">Contact Us </span>here so we can help
         </h2>
+      </section>
+
+      {/* Newsletter */}
+      <section className="md:w-[75%] w-full dark:w-auto mx-auto bg-[#EDEFFF] dark:bg-[rgb(13,13,13)] mb-16 p-12 mt-10 rounded-lg">
+        <h2 className="text-3xl font-semibold text-center mb-2">
+          Subscribe to our Events Newsletter
+        </h2>
+        <p className="text-center text-base font-normal mb-10">
+          Subscribe to our Newsletter so you don't miss new
+          <br /> events, exclusive offers and premium discounts
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-md mx-auto">
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full p-3 rounded-md bg-[#DFE1FF] dark:bg-[#000000] border-blue-200 border"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 rounded-md bg-[#DFE1FF] dark:bg-[#000000] border-blue-200 border"
+              required
+            />
+          </div>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="w-auto bg-gradient-to-r from-[#624CF5] to-[#624CF5] text-white py-3 px-10 rounded-md hover:bg-indigo-900 transition duration-300"
+            >
+              Subscribe
+            </button>
+          </div>
+        </form>
       </section>
     </>
   );
