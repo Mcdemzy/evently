@@ -6,7 +6,6 @@ import NavItems from './NavItems';
 import MobileNav from './MobileNav';
 import { buttonVariants } from '../ui/button';
 import ThemeToggle from '../ThemeToggle';
-import CustomUser
 
 const Header = () => {
   return (
