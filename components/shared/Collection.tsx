@@ -14,7 +14,7 @@ type CollectionProps = {
   data: IEvent[];
   emptyTitle: string;
   emptyStateSubtext: string;
-  // limit: number;
+  limit: number;
   page: number | string;
   totalPages?: number;
   urlParamName?: string;
