@@ -1,21 +1,24 @@
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "../ui/button";
-import NavItems from "./NavItems";
-import MobileNav from "./MobileNav";
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '../ui/button';
+import NavItems from './NavItems';
+import MobileNav from './MobileNav';
+import { buttonVariants } from '../ui/button';
+import ThemeToggle from '../ThemeToggle';
 
 const Header = () => {
   return (
-    <header className="w-full border-b">
+    <header className="w-full shadow-md dark:shadow-[#313131] sticky top-0 bg-white dark:bg-black bg-opacity-[0.97] z-10">
       <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
+        <Link href="/" className="w-auto flex items-center">
           <Image
             src="/assets/images/logo.svg"
-            width={128}
-            height={38}
+            width={30}
+            height={50}
             alt="Evently logo"
           />
+          <span className="ml-2 text-2xl font-bold">Evently</span>
         </Link>
 
         <SignedIn>
@@ -24,16 +27,26 @@ const Header = () => {
           </nav>
         </SignedIn>
 
-        <div className="flex w-32 justify-end gap-3">
+        <div className="flex w-32 justify-end items-center gap-3">
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
             <MobileNav />
           </SignedIn>
           <SignedOut>
-            <Button asChild className="rounded-full" size="lg">
+            <Button
+              asChild
+              className={buttonVariants({ variant: 'login', size: 'lg' })}
+            >
               <Link href="/sign-in">Login</Link>
             </Button>
+            <Button
+              asChild
+              className={buttonVariants({ variant: 'signup', size: 'lg' })}
+            >
+              <Link href="/sign-up">Sign Up</Link>
+            </Button>
           </SignedOut>
+          <ThemeToggle />
         </div>
       </div>
     </header>

@@ -1,7 +1,14 @@
-import { IEvent } from "@/lib/database/models/event.model";
-import React from "react";
-import Card from "./Card";
-import Pagination from "./Pagination";
+'use client';
+import { IEvent } from '@/lib/database/models/event.model';
+import React from 'react';
+import Card from './Card';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay, Navigation } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import './Collection.css';
+// import Pagination from "./Pagination";
 
 type CollectionProps = {
   data: IEvent[];
@@ -11,7 +18,7 @@ type CollectionProps = {
   page: number | string;
   totalPages?: number;
   urlParamName?: string;
-  collectionType?: "Events_Organized" | "My_Tickets" | "All_Events";
+  collectionType?: 'Events_Organized' | 'My_Tickets' | 'All_Events';
 };
 
 const Collection = ({
@@ -23,34 +30,99 @@ const Collection = ({
   collectionType,
   urlParamName,
 }: CollectionProps) => {
+  const [slides, setSlides] = useState<IEvent[]>([]);
+
+  useEffect(() => {
+    setSlides([...data, ...data, ...data]);
+  }, [data]);
+
   return (
     <>
       {data.length > 0 ? (
-        <div className="flex flex-col items-center gap-10">
-          <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
-            {data.map((event) => {
-              const hasOrderLink = collectionType === "Events_Organized";
-              const hidePrice = collectionType === "My_Tickets";
+        <div className="relative flex items-center h-full">
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              360: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
+            modules={[Autoplay, Navigation]}
+            navigation={{
+              prevEl: '.swiper-button-prev',
+              nextEl: '.swiper-button-next',
+            }}
+            className="w-full"
+            centeredSlides={true}
+            slideToClickedSlide={true}
+          >
+            {slides.map((event, index) => {
+              const hasOrderLink = collectionType === 'Events_Organized';
+              const hidePrice = collectionType === 'My_Tickets';
 
               return (
-                <li key={event._id} className="flex justify-center">
+                <SwiperSlide
+                  key={event._id}
+                  className={`w-auto transition-transform duration-500`}
+                >
                   <Card
                     event={event}
                     hasOrderLink={hasOrderLink}
                     hidePrice={hidePrice}
                   />
-                </li>
+                </SwiperSlide>
               );
             })}
-          </ul>
+          </Swiper>
 
-          {totalPages > 1 && (
+          <div className="swiper-button-prev cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-white dark:text-black"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M15.707 18.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 111.414 1.414L10.414 12l5.293 5.293a1 1 0 010 1.414z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+          <div className="swiper-button-next cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6 text-white dark:text-black"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M8.293 18.707a1 1 0 010-1.414L13.586 12 8.293 6.707a1 1 0 011.414-1.414l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+
+          {/* {totalPages > 1 && (
             <Pagination
               urlParamName={urlParamName}
               page={page}
               totalPages={totalPages}
             />
-          )}
+          )} */}
         </div>
       ) : (
         <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
