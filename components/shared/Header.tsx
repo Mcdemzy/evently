@@ -6,10 +6,11 @@ import NavItems from './NavItems';
 import MobileNav from './MobileNav';
 import { buttonVariants } from '../ui/button';
 import ThemeToggle from '../ThemeToggle';
+import CustomUser
 
 const Header = () => {
   return (
-    <header className="w-full shadow-md dark:shadow-[#313131] sticky top-0 bg-white dark:bg-black bg-opacity-[0.97]">
+    <header className="w-full shadow-md dark:shadow-[#313131] sticky top-0 bg-white dark:bg-black bg-opacity-[0.97] z-10">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-auto flex items-center">
           <Image
