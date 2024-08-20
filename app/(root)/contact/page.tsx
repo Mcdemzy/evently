@@ -1,15 +1,50 @@
+"use client";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
-import React from "react";
 import { FaRegCalendarXmark } from "react-icons/fa6";
 import { LuTicket } from "react-icons/lu";
 import { HiOutlineMail } from "react-icons/hi";
 import { BiParty } from "react-icons/bi";
 import { MdOutlineCardGiftcard } from "react-icons/md";
 import { BsPersonVcard } from "react-icons/bs";
+import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactPage = () => {
+  const form = useRef<HTMLFormElement | null>(null);
+  const [isSending, setIsSending] = useState(false);
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    setIsSending(true);
+
+    emailjs
+      .sendForm(
+        "service_v8tcnqi",
+        "template_4mcbjnf",
+        form.current,
+        "Bv1hcOwU8VLedk5Xt"
+      )
+      .then(
+        () => {
+          toast.success("Email Sent successfully!");
+          form.current?.reset();
+        },
+        (error) => {
+          toast.error(`Failed to send email: ${error.text}`);
+        }
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
+  };
   return (
     <>
+      <ToastContainer />
       <section className="mt-10">
         <h1 className="text-[#FA776C] text-[3rem] font-semibold text-center">
           Contact Us
@@ -17,15 +52,16 @@ const ContactPage = () => {
       </section>
 
       <main className="p-10 mt-11 flex gap-9 justify-center">
-        {/* Contact Form */}
         <section className="bg-[#EDEFFF] w-[55%] min-h-[500px] py-10 px-[60px] rounded-tl-[40px] rounded-br-[40px]">
-          <form action="" className="flex flex-col gap-6">
+          <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
+            {/* Form fields go here */}
             <div>
               <label className="block text-[1.25rem] font-normal">
                 First Name<span className="text-red-500 ml-1">*</span>
               </label>
               <input
                 type="text"
+                name="firstName"
                 className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
@@ -36,6 +72,7 @@ const ContactPage = () => {
               </label>
               <input
                 type="text"
+                name="lastName"
                 className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
@@ -46,6 +83,7 @@ const ContactPage = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
@@ -56,6 +94,7 @@ const ContactPage = () => {
               </label>
               <textarea
                 rows={4}
+                name="message"
                 className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
               ></textarea>
             </div>
@@ -64,6 +103,7 @@ const ContactPage = () => {
                 type="checkbox"
                 id="agree"
                 className="mr-2 cursor-pointer"
+                required
               />
               <label htmlFor="agree" className="text-gray-700 cursor-pointer">
                 I agree to the{" "}
@@ -72,9 +112,12 @@ const ContactPage = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700"
+              disabled={isSending}
+              className={`w-full bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 ${
+                isSending ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             >
-              Send Message
+              {isSending ? "Sending..." : "Send Message"}
             </button>
           </form>
         </section>
