@@ -51,8 +51,8 @@ const ContactPage = () => {
         </h1>
       </section>
 
-      <main className="p-10 mt-11 flex gap-9 justify-center">
-        <section className="bg-[#EDEFFF] w-[55%] min-h-[500px] py-10 px-[60px] rounded-tl-[40px] rounded-br-[40px]">
+      <main className="p-10 mt-11 flex md:flex-row flex-col gap-9 justify-center">
+        <section className="bg-[#EDEFFF] dark:bg-[#0D0D0D] h-full w-full md:w-[55%] min-h-[500px] py-10 px-[60px] rounded-tl-[40px] rounded-br-[40px]">
           <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
             {/* Form fields go here */}
             <div>
@@ -62,7 +62,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="firstName"
-                className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
+                className="bg-[#DFE1FF] dark:bg-[#1F1F1F] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
             </div>
@@ -73,7 +73,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="lastName"
-                className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
+                className="bg-[#DFE1FF] dark:bg-[#1F1F1F] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
             </div>
@@ -84,7 +84,7 @@ const ContactPage = () => {
               <input
                 type="email"
                 name="email"
-                className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
+                className="bg-[#DFE1FF] dark:bg-[#1F1F1F] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
                 required
               />
             </div>
@@ -95,7 +95,7 @@ const ContactPage = () => {
               <textarea
                 rows={4}
                 name="message"
-                className="bg-[#DFE1FF] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
+                className="bg-[#DFE1FF] dark:bg-[#1F1F1F] w-full px-4 py-2 mt-2 border rounded-md border-transparent focus:border-purple-500 focus:bg-white focus:ring-0"
               ></textarea>
             </div>
             <div className="flex items-center">
@@ -105,7 +105,7 @@ const ContactPage = () => {
                 className="mr-2 cursor-pointer"
                 required
               />
-              <label htmlFor="agree" className="text-gray-700 cursor-pointer">
+              <label htmlFor="agree" className="text-gray-700 dark:text-white cursor-pointer">
                 I agree to the{" "}
                 <span className="text-red-500">Terms & conditions</span>
               </label>
@@ -124,7 +124,7 @@ const ContactPage = () => {
 
         <section className="w-[50%] flex items-center justify-center relative">
           {/* Evently Logo Section */}
-          <div className="flex items-center justify-center w-[200px] h-[200px] gap-3 shadow-2xl rounded-full px-[13px] py-[50px] z-[1] bg-white">
+          <div className="flex items-center justify-center w-[200px] h-[200px] gap-3 shadow-2xl rounded-full px-[13px] py-[50px] z-[1] bg-white dark:text-black">
             <Image
               src="/assets/images/logo.svg"
               width={30}
@@ -132,7 +132,8 @@ const ContactPage = () => {
               alt="Event Image"
               className=""
             />
-            <p className="text-[2rem] font-semibold">Evently</p>
+            <span className="md:text-2xl text-xl font-bold">Evently</span>
+
           </div>
 
           {/* Icon and Line Section */}

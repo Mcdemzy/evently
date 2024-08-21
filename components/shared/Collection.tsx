@@ -22,7 +22,7 @@ type CollectionProps = {
 };
 
 const Collection = ({
-  data,
+  data ,
   emptyTitle,
   emptyStateSubtext,
   page,
@@ -57,7 +57,7 @@ const Collection = ({
                 slidesPerView: 3,
               },
             }}
-            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            autoplay={{ delay: 3000, pauseOnMouseEnter: true }}
             loop={true}
             modules={[Autoplay, Navigation]}
             navigation={{
@@ -87,7 +87,7 @@ const Collection = ({
             })}
           </Swiper>
 
-          <div className="swiper-button-prev cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
+          <div className="swiper-button-prev z-10 cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6 text-white dark:text-black"
@@ -101,7 +101,7 @@ const Collection = ({
               />
             </svg>
           </div>
-          <div className="swiper-button-next cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
+          <div className="swiper-button-next z-10 cursor-pointer flex items-center justify-center bg-black/50 dark:bg-white/50 hover:bg-black/75 dark:hover:bg-white/75 rounded-full p-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-6 h-6 text-white dark:text-black"
@@ -125,7 +125,7 @@ const Collection = ({
           )} */}
         </div>
       ) : (
-        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
+        <div className="flex-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] py-28 text-center">
           <h3 className="p-bold-20 md:h5-bold">{emptyTitle}</h3>
           <p className="p-regular-14">{emptyStateSubtext}</p>
         </div>

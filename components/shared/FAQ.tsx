@@ -1,5 +1,7 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import useOutsideClick from './useOutsideClick/useOutsideClick';
 
 interface FAQItem {
@@ -41,10 +43,10 @@ const FAQItem: React.FC<{
     if (isOpen) setOpenIndex(null);
   });
 
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState<string | number>(0);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = React.useState<string | number>(0);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isOpen && contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight);
     } else {
@@ -58,10 +60,10 @@ const FAQItem: React.FC<{
       className={`mb-4 rounded-2xl ${isOpen ? 'bg-[#624CF5] text-white' : 'bg-[#EDEFFF] dark:bg-[#624CF5]'}`}
     >
       <button
-        className="w-full text-left font-normal md:text-xl text-base p-4 bg-lavender-50 hover:bg-lavender-100 rounded-lg flex justify-between items-center"
+        className="w-full p-4 bg-lavender-50 hover:bg-lavender-100 rounded-lg flex justify-between items-center"
         onClick={() => setOpenIndex(isOpen ? null : index)}
       >
-        <span>{item.question}</span>
+        <span className='text-left font-normal md:text-xl text-base'>{item.question}</span>
         <svg
           className={`w-6 h-6 transition-transform ${isOpen ? 'transform rotate-180' : ''}`}
           fill="none"
@@ -91,13 +93,37 @@ const FAQItem: React.FC<{
 
 const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.6 });
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.4, type: 'spring', stiffness: 50, ease: 'easeOut'  },
+      });
+    } else {
+      controls.start({
+        opacity: 0,
+        scale: 0.8,
+        transition: { duration: 0.8, type: 'spring', stiffness: 50, ease: 'easeOut'  },
+      });
+    }
+  }, [inView, controls]);
+
   return (
-    <div className="md:max-w-7xl w-full mx-auto p-6">
-      <h2 className="text-[30px] lg:text-[40px] font-bold text-center text-[#1C1C1C] dark:text-[#EDEFFF] leading-[60px] mb-2 uppercase">
+    <motion.div
+      ref={ref}
+      className="md:max-w-7xl w-full mx-auto p-6"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={controls}
+    >
+      <h2 className="text-[30px] lg:text-[40px] font-bold text-center text-[#1C1C1C] dark:text-[#EDEFFF] leading-[60px] md:mb-5 mb-1 uppercase">
         FAQ
       </h2>
       <div className="max-w-full lg:w-[120px] w-[80px] lg:border-[3px] border-[2px] border-[#1C1C1C] dark:border-[#EDEFFF] mx-auto"></div>
-      <p className="text-center font-normal text-base md:text-xl mb-5 leading-5 md:leading-[60px]">
+      <p className="text-center font-normal text-base md:text-xl md:mt-5 mt-2 leading-5 md:leading-[60px] mb-10">
         Our most frequently asked questions and answers
       </p>
       {faqData.map((item, index) => (
@@ -109,8 +135,9 @@ const FAQ: React.FC = () => {
           setOpenIndex={setOpenIndex}
         />
       ))}
-    </div>
+    </motion.div>
   );
 };
 
 export default FAQ;
+// that kind thing
