@@ -91,10 +91,14 @@ const Footer = () => {
       >
         <p>© 2023 Evently. All rights reserved.</p>
         <p>
-          Designed and created by{' '}
-          <a href="https://the4coders.com" className="font-bold text-[#FA776C] hover:underline dark:text-[#FA776C]">
+          Designed and created by{" "}
+          <a
+            href="https://the4coders.com"
+            className="font-bold text-[#FA776C] hover:underline dark:text-[#FA776C]"
+          >
             The4Coders
-          </a>.
+          </a>
+          .
         </p>
       </motion.div>
     </footer>
