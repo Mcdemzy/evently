@@ -117,5 +117,6 @@ const EventDetails = async ({
     </>
   );
 };
+// omo
 
 export default EventDetails;
