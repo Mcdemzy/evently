@@ -27,66 +27,77 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (
-    <div className="group mx-auto relative flex h-full w-full max-w-[382px] flex-col overflow-hidden rounded-xl bg-white dark:bg-black shadow-md transition-all hover:shadow-lg border-[#DFE1FF] border">
-      <Link
-        href={`/events/${event._id}`}
-        style={{ backgroundImage: `url(${event.imageUrl})` }}
-        className="bg-gray-50 bg-cover bg-center text-grey-500 h-[300px] max-h-full w-full"
-      />
-      {isEventCreator && !hidePrice && (
-        <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
-          <Link href={`/events/${event._id}/update`}>
-            <Image
-              src="/assets/icons/edit.svg"
-              alt="edit"
-              width={20}
-              height={20}
-            />
-          </Link>
-          <DeleteConfirmation eventId={event._id} />
-        </div>
-      )}
-      <div className="flex h-full flex-col gap-3 p-5 md:gap-4">
-        <Link href={`/events/${event._id}`}>
-          <p className="font-semibold text-2xl text-[#25194D] dark:text-white">{event.title}</p>
-        </Link>
-        {!hidePrice && (
-          <div className="flex gap-8 w-full items-center">
-            <span className="font-semibold text-xl rounded-full bg-[#25194D] dark:bg-white px-6 py-2 text-white dark:text-black">
-              {event.isFree ? 'FREE' : `$${event.price}`}
-            </span>
-            <p className="font-medium text-xl rounded-full text-[#25194D] dark:text-white">
-              {event.category.name}
-            </p>
+    <Link href={`/events/${event._id}`} className="group relative block h-full w-full max-w-[382px] flex-col mx-auto justify-center">
+      <div className="relative flex h-full w-full max-w-[382px] flex-col justify-center overflow-hidden rounded-xl bg-white dark:bg-black shadow-md transition-all hover:shadow-lg border-[#DFE1FF] border">
+        <div
+          style={{ backgroundImage: `url(${event.imageUrl})` }}
+          className="bg-gray-50 bg-cover bg-center text-grey-500 h-[300px] max-h-full w-full"
+        >
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 text-white transition-opacity duration-300 opacity-0 group-hover:bg-opacity-50 group-hover:opacity-100">
+            <span className="text-2xl font-bold">Get Tickets</span>
           </div>
-        )}
-        <p className="font-medium text-xl text-[#25194D] dark:text-white flex items-center gap-5">
-          <FaCalendarAlt size={24} />
-          {formatDateTime(event.startDateTime).dateTime}
-        </p>
-        <div className="flex-between w-full">
-          <p className="font-medium text-xl text-[#25194D] dark:text-white flex items-center gap-5">
-            <FaMapMarkerAlt size={24} />
-            {event.organizer.firstName} {event.organizer.lastName}
-          </p>
-          {hasOrderLink && (
-            <Link href={`/orders?eventId=${event._id}`} className="flex gap-2">
-              <p className="text-[#25194D] dark:text-white">Order Details</p>
+        </div>
+        {isEventCreator && !hidePrice && (
+          <div className="absolute right-2 top-2 flex flex-col gap-4 rounded-xl bg-white p-3 shadow-sm transition-all">
+            <Link href={`/events/${event._id}/update`}>
               <Image
-                src="/assets/icons/arrow.svg"
-                alt="search"
-                width={10}
-                height={10}
+                src="/assets/icons/edit.svg"
+                alt="edit"
+                width={20}
+                height={20}
               />
             </Link>
+            <DeleteConfirmation eventId={event._id} />
+          </div>
+        )}
+        <div className="flex h-full flex-col gap-3 p-5 md:gap-4">
+          <Link href={`/events/${event._id}`}>
+            <p className="font-semibold text-2xl text-[#25194D] dark:text-white">
+              {event.title}
+            </p>
+          </Link>
+          {!hidePrice && (
+            <div className="flex gap-8 w-full items-center">
+              <span className="font-semibold text-xl rounded-full bg-[#25194D] dark:bg-white px-6 py-2 text-white dark:text-black">
+                {event.isFree ? 'FREE' : `$${event.price}`}
+              </span>
+              <p className="font-medium text-xl rounded-full text-[#25194D] dark:text-white">
+                {event.category.name}
+              </p>
+            </div>
           )}
+          <p className="font-medium text-xl text-[#25194D] dark:text-white flex items-center gap-5">
+            <FaCalendarAlt size={24} />
+            {formatDateTime(event.startDateTime).dateTime}
+          </p>
+          <div className="flex-between w-full">
+            <p className="font-medium text-xl text-[#25194D] dark:text-white flex items-center gap-5">
+              <FaMapMarkerAlt size={24} />
+              {event.organizer.firstName} {event.organizer.lastName}
+            </p>
+            {hasOrderLink && (
+              <Link
+                href={`/orders?eventId=${event._id}`}
+                className="flex gap-2"
+              >
+                <p className="text-[#25194D] dark:text-white">Order Details</p>
+                <Image
+                  src="/assets/icons/arrow.svg"
+                  alt="search"
+                  width={10}
+                  height={10}
+                />
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export default Card;
+
 
 // import { IEvent } from '@/lib/database/models/event.model';
 // import { formatDateTime } from '@/lib/utils';

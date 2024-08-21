@@ -31,7 +31,7 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
+      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50 dark:bg-gray-900"
     >
       <input {...getInputProps()} className="cursor-pointer" />
 
@@ -46,7 +46,7 @@ export function FileUploader({
           />
         </div>
       ) : (
-        <div className="flex-center flex-col py-5 text-grey-500">
+        <div className="flex-center flex-col py-5 text-grey-500 dark:text-white">
           <img
             src="/assets/icons/upload.svg"
             width={77}

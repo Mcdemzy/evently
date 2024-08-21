@@ -144,6 +144,9 @@ export type RemoveUrlQueryParams = {
 };
 
 export type SearchParamProps = {
+  page(page: any): unknown;
+  query: string;
+  category: string;
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };

@@ -9,7 +9,7 @@ import ThemeToggle from '../ThemeToggle';
 
 const Header = () => {
   return (
-    <header className="w-full shadow-md dark:shadow-[#313131] sticky top-0 bg-white dark:bg-black bg-opacity-[0.97] z-10">
+    <header className="w-full shadow-md dark:shadow-[#313131] sticky top-0 bg-white dark:bg-black bg-opacity-[0.97] z-20">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-auto flex items-center">
           <Image
@@ -18,7 +18,12 @@ const Header = () => {
             height={50}
             alt="Evently logo"
           />
-          <span className="ml-2 text-2xl font-bold">Evently</span>
+          <SignedIn>
+            <span className="ml-2 md:text-2xl text-xl font-bold">Evently</span>
+          </SignedIn>
+          <SignedOut>
+            <span className="ml-2 md:block hidden text-2xl font-bold">Evently</span>
+          </SignedOut>
         </Link>
 
         <SignedIn>
