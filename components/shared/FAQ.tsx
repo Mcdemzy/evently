@@ -140,3 +140,4 @@ const FAQ: React.FC = () => {
 };
 
 export default FAQ;
+// that kind thing
