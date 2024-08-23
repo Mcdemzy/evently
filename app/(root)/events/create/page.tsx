@@ -23,7 +23,7 @@
 // export default CreateEvent;
 export default function CreateEvent()  {
   return (
-   <main className="w-full h-[700px]">
+   <main className="w-full">
     <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">CREATE EVENT</h2>
     <p className="text-center mt-2 text-[#25194D]">Begin your journey to an unforgettable experience.</p>
     {/* progress bars */}
@@ -41,7 +41,7 @@ export default function CreateEvent()  {
   <p>APPEARANCE</p>
 </div>
     </section>
-    <section className="w-[80%] m-auto border-2 border-primar">
+    <section className="w-[80%] m-auto h-full">
     <h2 className="text-[#25194D] text-2xl font-semibold">EVENT DETAILS</h2>
     {/* form */}
 <form className="mt-5" action="#">
@@ -52,46 +52,55 @@ export default function CreateEvent()  {
         </div>
         <div>
         <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Category Event <span className="text-[#FA776C]">*</span></label>
-        <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
           <option value="">Select Category</option>
         </select>
         </div>
-        <div>
-            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
-        </div>                        <div>
-            <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-            <input type="password" name="confirm-password" id="confirm-password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
-        </div>
+        <div className="col-span-2">
+        <label htmlFor="description" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Description of event <span className="text-[#FA776C]">*</span></label>
+            <textarea cols={4} rows={5} className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  name="" id="" ></textarea>
+        </div>             
     </div>
     <h2 className="mt-6 text-[#25194D] text-2xl font-semibold">EVENT DATE & TIME</h2>
     <div className="mt-6 grid gap-4 mb-4 sm:grid-cols-2">
         <div>
-            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Start Date <span className="text-[#FA776C]">*</span></label>
-           
-    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-    <div className="relative">
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-           
-            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400 lucide lucide-calendar-days" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
-        </div>
-        <input type="date" id="default-search" className="p-4 ps-10 border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
-    </div>
-
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Start Date <span className="text-[#FA776C]">*</span></label>  
+    <input type="date" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
         </div>
         <div>
         <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">End Date <span className="text-[#FA776C]">*</span></label>
-        <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
-        
-        </div>
-        <div>
-            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="password" name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
-        </div>                        <div>
-            <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
-            <input type="password" name="confirm-password" id="confirm-password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="•••••••••" required/>
+    <input type="date" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
         </div>
     </div>
+    <div className="mt-6 grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Start Time <span className="text-[#FA776C]">*</span></label>  
+    <input type="time" name="start-time" id="time" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        <div>
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">End Time <span className="text-[#FA776C]">*</span></label>
+    <input type="date" name="time" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+   
+        </div>
+      
+    </div>
+    <h2 className="mt-6 text-[#25194D] text-2xl font-semibold">EVENT LOCATION</h2>
+
+<div className="flex flex-row justify-start items-center">
+<div className="mt-6 flex items-center">
+    <label htmlFor="default-radio-1" className="text-md font-medium text-[#25194D] dark:text-gray-300  me-2">Physical Event</label>
+    <input type="radio" name="" id="" />
+</div>
+<div className="mt-6 flex items-center">
+    <label htmlFor="default-radio-2" className="ms-2 text-md font-medium text-[#25194D] dark:text-gray-300 me-2">Online Event</label>
+    <input type="radio" name="" id="" />
+</div>
+</div>
+{/* buttons */}
+<section className="my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
+    <button className="shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Cancel</button>
+    <button className="w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</button>
+</section>
 </form>
 
     </section>
