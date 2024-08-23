@@ -1,6 +1,8 @@
 // import EventForm from "@/components/shared/EventForm";
 // import { auth } from "@clerk/nextjs";
 
+import Link from "next/link";
+
 // const CreateEvent = () => {
 //   const { sessionClaims } = auth();
 
@@ -99,7 +101,7 @@ export default function CreateEvent()  {
 {/* buttons */}
 <section className="my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
     <button className="shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Cancel</button>
-    <button className="w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</button>
+    <Link href="/events/create/2" className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</Link>
 </section>
 </form>
 
