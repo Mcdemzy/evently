@@ -193,8 +193,8 @@ export default function Page()  {
 {/* buttons */}
 </section>
   <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
-      <button className="shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Cancel</button>
-      <Link href="/events/create/2" className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</Link>
+      <Link href="/events/create" className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Receed</Link>
+      <Link href="/events/create/3" className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</Link>
   </section>
    </main>
   )
