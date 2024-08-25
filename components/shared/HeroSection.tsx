@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 const HeroSection: React.FC = () => {
   const { ref, inView } = useInView({
@@ -41,9 +42,9 @@ const HeroSection: React.FC = () => {
         <button className="md:px-20 px-8 py-4 border border-[#624CF5] dark:border-[#DFE1FF] text-[#6440EB] dark:text-[#DFE1FF] rounded-md dark:hover:bg-gray-900 hover:bg-gray-200 transition-colors">
           Find Event
         </button>
-        <button className="md:px-20 px-8 py-4 bg-gradient-to-r from-[#624CF5] to-[#6440EB] text-white rounded-md hover:bg-indigo-700 transition-colors">
+        <Link href="/events/create" className="md:px-20 px-8 py-4 bg-gradient-to-r from-[#624CF5] to-[#6440EB] text-white rounded-md hover:bg-indigo-700 transition-colors">
           Create Event
-        </button>
+        </Link>
       </motion.div>
     </div>
   );

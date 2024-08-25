@@ -1,29 +1,9 @@
-// import EventForm from "@/components/shared/EventForm";
-// import { auth } from "@clerk/nextjs";
-
+"use client"
 import Link from "next/link";
-
-// const CreateEvent = () => {
-//   const { sessionClaims } = auth();
-
-//   const userId = sessionClaims?.userId as string;
-
-//   return (
-//     <>
-//       <section className="py-5 md:py-10">
-//         <h3 className="wrapper h3-bold text-center sm:text-left">
-//           Create Event
-//         </h3>
-//       </section>
-//       <div className="wrapper my-8">
-//         <EventForm userId={userId} type="Create" />
-//       </div>
-//     </>
-//   );
-// };
-
-// export default CreateEvent;
+import { useState } from "react";
 export default function CreateEvent()  {
+    const [physicalEvent, setPhysicalEvent] = useState(false);
+    const [onlineEvent, setOnlineEvent] = useState(false);
   return (
    <main className="w-full">
     <h2 className="text-[#25194D] font-semibold text-4xl text-center mt-14">CREATE EVENT</h2>
@@ -87,24 +67,67 @@ export default function CreateEvent()  {
       
     </div>
     <h2 className="mt-6 text-[#25194D] text-2xl font-semibold">EVENT LOCATION</h2>
-
 <div className="flex flex-row justify-start items-center">
-<div className="mt-6 flex items-center">
+    <div className="mt-6 flex items-center">
     <label htmlFor="default-radio-1" className="text-md font-medium text-[#25194D] dark:text-gray-300  me-2">Physical Event</label>
-    <input type="radio" name="" id="" />
-</div>
+                <input
+                type="checkbox"
+                id="physical-event"
+                checked={physicalEvent}
+                onChange={() => setPhysicalEvent(!physicalEvent)}
+              />
+    </div>
 <div className="mt-6 flex items-center">
     <label htmlFor="default-radio-2" className="ms-2 text-md font-medium text-[#25194D] dark:text-gray-300 me-2">Online Event</label>
-    <input type="radio" name="" id="" />
+               <input
+                type="checkbox"
+                id="online-event"
+                checked={onlineEvent}
+                onChange={() => setOnlineEvent(!onlineEvent)}
+              />
+        </div>
 </div>
-</div>
-{/* buttons */}
-<section className="my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
-    <button className="shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Cancel</button>
-    <Link href="/events/create/2" className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</Link>
-</section>
-</form>
-
+   {/* Physical Event */}
+        {physicalEvent && (
+            <div className="mb-10 mt-5 grid gap-4 mb-4 sm:grid-cols-2">
+              <div>
+                <label htmlFor="country" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Country <span className="text-[#FA776C]">*</span></label>
+                <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="">Select Country</option>
+                  <option value="Nigeria">Nigeria</option>
+                </select>
+              </div>
+              <div>
+                <label htmlFor="state" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">State <span className="text-[#FA776C]">*</span></label>
+                <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                  <option value="">Select State</option>
+                </select>
+              </div>
+              <div className="col-span-2 mt-4 relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-[#25194D] lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <input type="text" id="online-location" className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+            </div>
+            </div>
+          )}  
+          {/* Online Event */}
+          {onlineEvent && (
+            <div className="mt-4 relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#25194D] lucide lucide-link">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
+              </div>
+              <input type="url" id="online-location" className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter online event URL" required />
+            </div>
+          )}
+            <section className="mt-20 my-6 mb-10 w-full flex flex-row justify-center gap-x-8 items-center">
+                <Link href="/" className="flex justify-center items-center shaodw-md w-[240px] h-[48px] rounded-md text-primary text-md bg-[#624CF50D]">Cancel</Link>
+                <Link href="/events/create/2" className="flex justify-center items-center w-[240px] h-[48px] rounded-md text-white text-md bg-[#624CF5]">Proceed</Link>
+            </section>
+    </form>
     </section>
    </main>
   )
