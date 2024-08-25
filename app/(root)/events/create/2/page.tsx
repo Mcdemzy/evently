@@ -51,7 +51,6 @@ export default function Page()  {
 </div>
     </section>
     <section className="mt-4 mb-10 bg-[#E9E8ED] space-y-4 flex flex-col jusitfy-center items-center w-[80%] m-auto h-[440px] rounded-md">
-        {/* ticket logo */}
         <div className="mt-10 w-[100px] h-[100px]  rounded-full ">
           <Image src="/assets/images/ticket.png" width={100} height={100} alt={""}/>
         </div>
@@ -60,6 +59,125 @@ export default function Page()  {
         <div className="flex justify-center items-center w-full">
         <button className="m-auto text-[#25194D] bg-white px-4 p-1.5 border border-[#25194D] rounded-sm shadow-md">Add ticket +</button>
         </div>
+    </section>
+    {/* once you click create event */}
+    <section className="w-[80%] m-auto">
+    {/* <form className="mt-5" action="#">
+    <div className="flex flex-row justify-start items-center">
+    <div className="flex items-center">
+          <label htmlFor="default-radio-1" className="text-xl font-medium text-[#25194D] dark:text-gray-300  me-2">Free Ticket</label>
+                <input
+                type="radio"
+                id="physical-event"
+              />
+    </div>
+    <div className="flex items-center">
+           <label htmlFor="default-radio-2" className="ms-2 text-xl font-medium text-[#25194D] dark:text-gray-300 me-2">Paid Ticket</label>
+               <input
+                type="radio"
+                id="online-event"
+              />
+      </div>
+  </div>
+ </form> */}
+
+{/* if it is a free ticket */}
+    {/* <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Name <span className="text-[#FA776C]">*</span></label>
+            <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        <div className="">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Stock <span className="text-[#FA776C]">*</span></label>
+        <div className="flex flex-row gap-x-2">
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        </div>
+        </div>
+        <div className="col-span-2">
+        <label htmlFor="description" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Purchase Limit <span className="text-[#FA776C]">*</span></label>
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        <div className="col-span-2 mt-4 relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-[#25194D] lucide lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              </div>
+              <input placeholder="Benefits of this ticket" type="text" id="online-location" className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+            </div>
+        </div>   
+        <div className="col-span-2 mt-4 relative">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Description <span className="text-[#FA776C]">*</span></label>
+            <textarea cols={4} rows={5} className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  name="" id="" ></textarea>
+          </div>          
+    </div>            */}
+    {/* it it is a paid ticket */}
+    {/* <section>
+
+     <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Name <span className="text-[#FA776C]">*</span></label>
+            <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        <div className="">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Stock <span className="text-[#FA776C]">*</span></label>
+        <div className="flex flex-row gap-x-2">
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        </div>
+        </div>
+        <div>
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Purchase Limit <span className="text-[#FA776C]">*</span></label>
+            <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        <div className="">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Price <span className="text-[#FA776C]">*</span></label>
+        <div className="flex flex-row gap-x-2">
+        <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+     
+        <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        </div>
+        <div className="col-span-2 mt-4 relative">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="text-[#25194D] lucide lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+              </div>
+              <input placeholder="Benefits of this ticket" type="text" id="online-location" className="block w-full p-2.5 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
+            </div>
+        <div className="col-span-2 mt-4 relative">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Ticket Description <span className="text-[#FA776C]">*</span></label>
+            <textarea cols={4} rows={5} className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600  dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  name="" id="" ></textarea>
+          </div>          
+    </div>           
+   
+    <h2 className="mt-6 text-[#25194D] text-2xl font-semibold">Banking</h2>
+    <div className="mt-4 grid gap-4 mb-4 sm:grid-cols-2">
+        <div>
+            <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Bank <span className="text-[#FA776C]">*</span></label>
+            <select className="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+          <option value=""></option>
+        </select>
+        </div>
+        <div className="">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Account Number <span className="text-[#FA776C]">*</span></label>
+        <div className="flex flex-row gap-x-2">
+            <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+        </div>
+        </div>
+        <div className="col-span-2 mt-4 relative">
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-[#25194D] dark:text-white">Account Name <span className="text-[#FA776C]">*</span></label>
+        <input type="text" name="username" id="username" className=" border border-[#1C1C1C] border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required/>
+          </div>          
+    </div>  
+    </section> */}
     </section>
     <section className="mt-4 w-[80%] m-auto  py-10">
     <h2 className="text-[#25194D] text-2xl font-semibold">SOCIAL LINK</h2>
