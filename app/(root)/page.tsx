@@ -29,16 +29,12 @@ export default function Home({ searchParams }: SearchParamProps) {
         <ExploreNow />
       </section>
       <section>
-        <TrendingEvents searchParams={searchParams} page={function (page: any): unknown {
-          throw new Error('Function not implemented.');
-        } } query={''} category={''} params={{
+        <TrendingEvents params={{
           id: ''
-        }} />
+        }} searchParams={{}}/>
       </section>
       <section>
-        <NewEvents page={function (page: any): unknown {
-          throw new Error('Function not implemented.');
-        } } query={''} category={''} params={{
+        <NewEvents params={{
           id: ''
         }} searchParams={{}} />
       </section>

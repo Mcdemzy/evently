@@ -143,10 +143,15 @@ export type RemoveUrlQueryParams = {
   keysToRemove: string[];
 };
 
+// export type SearchParamProps = {
+//   page(page: any): unknown;
+//   query: string;
+//   category: string;
+//   params: { id: string };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// };
+
 export type SearchParamProps = {
-  page(page: any): unknown;
-  query: string;
-  category: string;
   params: { id: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
